@@ -1,20 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
 
-export default function App() {
+import Details from "./app/screens/Details";
+import Home from "./app/screens/Home";
+
+const Stack = createStackNavigator();
+
+const App = () => {
+  const [loaded] = useFonts({
+    InterBold: require("./app/assets/fonts/Inter-Bold.ttf"),
+    InterSemiBold: require("./app/assets/fonts/Inter-SemiBold.ttf"),
+    InterMedium: require("./app/assets/fonts/Inter-Medium.ttf"),
+    InterRegular: require("./app/assets/fonts/Inter-Bold.ttf"),
+    InterLight: require("./app/assets/fonts/Inter-Light.ttf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen component={Home} name="Home" />
+        <Stack.Screen
+          component={Details}
+          name="Details"
+          options={{ presentation: "modal" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
