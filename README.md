@@ -2,4 +2,4 @@
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">FullStack Developer from Ukraine</h3>
 <h4 align="center">This is a code repository for the corresponding app, enjoy!</h4>
-<img src="./app/assets/nft_marketplace.png" alt="NFT marketplace">
+<img src="./app/assets/nft.png" alt="NFT marketplace">
